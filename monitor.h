@@ -1,0 +1,16 @@
+//monitor.h
+#include "systemc"
+
+SC_MODULE (monitor){
+	sc_in<bool> m_a,m_b,m_s,m_c;
+	void prc_monitor(){
+		cout<<"  At "<<sc_time_stamp()<<" input m_a is: "<<m_a<<" "<<"input m_b is: "<<m_b;
+				cout<<" output m_s is: "<<m_s<<"  "<<" output m_c is: "<<m_c<<endl;
+
+		}
+	SC_CTOR(monitor){
+		SC_METHOD(prc_monitor);
+		sensitive<<m_a<<m_b<<m_s<<m_c;
+
+		}
+};
